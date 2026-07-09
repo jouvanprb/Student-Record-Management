@@ -16,7 +16,6 @@ func CreateFileIfNotExist() {
 	if os.IsNotExist(err) {
 		fmt.Println("File is not exist")
 	} else {
-		fmt.Printf("File %v is exist \n", fileName)
 		return
 	}
 
@@ -66,6 +65,6 @@ func LoadStudent() []student {
 	}
 
 	// print
-	fmt.Println(students)
+	// fmt.Println(students)
 	return students
 }
