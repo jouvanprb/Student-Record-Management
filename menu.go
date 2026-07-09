@@ -31,20 +31,22 @@ func AddStudent() {
 	reader := bufio.NewReader(os.Stdin)
 
 	var id int
-	fmt.Print("ID     \n: ")
+	fmt.Print("  ID      : ")
 	fmt.Scan(&id)
 
-	fmt.Print("Name   \n: ")
+	fmt.Print("  Name    : ")
 	name, _ := reader.ReadString('\n')
 	name = strings.TrimSpace(name)
 
 	var age int
-	fmt.Print("Age    \n: ")
+	fmt.Print("  Age     : ")
 	fmt.Scan(&age)
 
-	fmt.Print("Address\n: ")
+	fmt.Print("  Address : ")
 	address, _ := reader.ReadString('\n')
 	address = strings.TrimSpace(address)
+
+	fmt.Println()
 
 	// make the new instance of struct
 	newData := student{
