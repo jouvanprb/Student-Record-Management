@@ -25,7 +25,7 @@ func CreateFileIfNotExist() {
 		fmt.Printf("File Error %v\n", err)
 		return
 	}
-	
+
 	// close file
 	defer file.Close()
 
@@ -67,4 +67,22 @@ func LoadStudent() []student {
 	// print
 	// fmt.Println(students)
 	return students
+}
+
+func SaveStudent(students []student) {
+	file, err := os.OpenFile("data.json", os.O_TRUNC|os.O_RDWR, 0644)
+	if err != nil {
+		fmt.Printf("Return Error : %v\n", err)
+		return
+	}
+	defer file.Close()
+	// convert data to json
+	dataJson, err := json.MarshalIndent(students, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+	// overwrite json file
+	err = os.WriteFile("data.json", dataJson, 0644)
+
+	fmt.Println("-> Students data added successfully!")
 }
