@@ -1,28 +1,36 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
 	"os"
-	"strings"
 )
 
-func CreateFileIfNotExist(){
-	var fileName string 
-	fmt.Print("Enter File Name :")	
-	fmt.Scan(&fileName)
+func CreateFileIfNotExist() {
+	// Enter file name
+	const fileName = "data.json"
 
-	if !strings.HasSuffix(fileName, ".json") {
-		fileName += ".json"
+	// Check the file if exist
+	_, err := os.Stat(fileName)
+	if os.IsNotExist(err) {
+		fmt.Println("File is not exist")
+	} else {
+		fmt.Printf("File %v is exist \n", fileName)
+		return
 	}
 
+	// will create file if doesn't exist
 	file, err := os.Create(fileName)
 	if err != nil {
 		fmt.Printf("File Error %v\n", err)
 		return
-	} 
+	}
 	
+	// close file
 	defer file.Close()
 
+	// automatically write file contain json format []
 	_, err = file.WriteString("[]")
 	if err != nil {
 		fmt.Printf("Return Error %v\n", err)
