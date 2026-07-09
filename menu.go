@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -20,7 +22,41 @@ func ShowMenu() {
 }
 
 func AddStudent() {
+	fmt.Println("\n👨‍🎓 Add Student")
+	fmt.Println("================")
+	// save func value into variable
+	data := LoadStudent()
 
+	// Bufio for read input string
+	reader := bufio.NewReader(os.Stdin)
+
+	var id int
+	fmt.Print("ID     \n: ")
+	fmt.Scan(&id)
+
+	fmt.Print("Name   \n: ")
+	name, _ := reader.ReadString('\n')
+	name = strings.TrimSpace(name)
+
+	var age int
+	fmt.Print("Age    \n: ")
+	fmt.Scan(&age)
+
+	fmt.Print("Address\n: ")
+	address, _ := reader.ReadString('\n')
+	address = strings.TrimSpace(address)
+
+	// make the new instance of struct
+	newData := student{
+		ID:      id,
+		Name:    name,
+		Age:     age,
+		Address: address,
+	}
+	// add data to slice
+	data = append(data, newData)
+
+	SaveStudent(data)
 }
 
 func ViewStudent() {
