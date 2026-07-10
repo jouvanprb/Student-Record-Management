@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -75,7 +76,9 @@ func ViewStudent() {
 }
 
 func SearchStudent() {
-	fmt.Print("Input Student ID: ")
+	fmt.Println("\n🔍 Search Student")
+	fmt.Println("================")
+	fmt.Print("  Enter ID: ")
 	var idStudent int
 	fmt.Scan(&idStudent)
 	fmt.Println()
@@ -96,6 +99,60 @@ func SearchStudent() {
 		}
 	}
 	// condition when searched data not found
+	if !found {
+		fmt.Printf(" ==> ID %d Not Found!", idStudent)
+	}
+}
+
+func UpdateStudent() {
+	fmt.Println("\n📝 Update Student")
+	fmt.Println("================")
+	fmt.Print("  Enter ID: ")
+	var idStudent int
+	fmt.Scan(&idStudent)
+	fmt.Println()
+
+	data := LoadStudent()
+	reader := bufio.NewReader(os.Stdin)
+	found := false
+
+	for i, s := range data {
+		if idStudent == s.ID {
+			fmt.Println(" ==> ID Found!")
+			fmt.Println(" ==> Update Student Data:")
+			fmt.Println()
+
+			found = true
+			fmt.Printf("  ID      : %d\n", s.ID)
+
+			fmt.Print("  Name    : ")
+			name, _ := reader.ReadString('\n')
+			name = strings.TrimSpace(name)
+
+			fmt.Print("  Age     : ")
+			ageStr, _ := reader.ReadString('\n')
+			ageStr = strings.TrimSpace(ageStr)
+
+			age, err := strconv.Atoi(ageStr)
+			if err != nil {
+				fmt.Printf("Return Error: %v", err)
+				return
+			}
+
+			fmt.Print("  Address : ")
+			address, _ := reader.ReadString('\n')
+			address = strings.TrimSpace(address)
+
+			data[i].Name = name
+			data[i].Age = age
+			data[i].Address = address
+
+			SaveStudent(data)
+			fmt.Println()
+			fmt.Println(" ==> Data Updated Successfully ")
+			break
+		}
+	}
 	if !found {
 		fmt.Printf(" ==> ID %d Not Found!", idStudent)
 	}
