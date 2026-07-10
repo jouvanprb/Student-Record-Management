@@ -57,7 +57,7 @@ func AddStudent() {
 	}
 	// add data to slice
 	data = append(data, newData)
-
+	// Send data to Func
 	SaveStudent(data)
 }
 
@@ -66,10 +66,37 @@ func ViewStudent() {
 	fmt.Println("================")
 	data := LoadStudent()
 	for i, s := range data {
-		fmt.Printf("%d ID       : %d\n", i+1, s.ID)
-		fmt.Printf("  Name     : %s\n", s.Name)
-		fmt.Printf("  Age      : %d\n", s.Age)
-		fmt.Printf("  Address  : %s\n", s.Address)
+		fmt.Printf("%d. ID       : %d\n", i+1, s.ID)
+		fmt.Printf("   Name     : %s\n", s.Name)
+		fmt.Printf("   Age      : %d\n", s.Age)
+		fmt.Printf("   Address  : %s\n", s.Address)
 		fmt.Println()
+	}
+}
+
+func SearchStudent() {
+	fmt.Print("Input Student ID: ")
+	var idStudent int
+	fmt.Scan(&idStudent)
+	fmt.Println()
+
+	data := LoadStudent()
+	found := false
+	//
+	for _, s := range data {
+		if idStudent == s.ID {
+			fmt.Println(" ==> ID Found!")
+			fmt.Println()
+			fmt.Printf("  ID       : %d\n", s.ID)
+			fmt.Printf("  Name     : %s\n", s.Name)
+			fmt.Printf("  Age      : %d\n", s.Age)
+			fmt.Printf("  Address  : %s\n", s.Address)
+			found = true
+			break
+		}
+	}
+	// condition when searched data not found
+	if !found {
+		fmt.Printf(" ==> ID %d Not Found!", idStudent)
 	}
 }
