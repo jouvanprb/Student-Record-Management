@@ -156,3 +156,30 @@ Every CRUD operation follows the same workflow:
 4. Save the updated slice back to `data.json`.
 
 This approach ensures that the JSON file always remains synchronized with the latest data.
+
+
+## CLI Program 
+
+1. Menu 
+
+![Menu](/img/menu.avif)
+
+2. Search Data
+
+![Search Data](/img/read.avif)
+
+3. Create New Data
+
+![Create Data](/img/create.avif)
+
+4. Update Data
+
+![Update Data](/img/update.avif)
+
+5. Delete Data
+
+![Delete Data](/img/delete.avif)
+
+6. Exit Program
+
+![Exit](/img/exit.avif)
