@@ -83,6 +83,4 @@ func SaveStudent(students []student) {
 	}
 	// overwrite json file
 	err = os.WriteFile("data.json", dataJson, 0644)
-
-	fmt.Println("-> Students data added successfully!")
 }
