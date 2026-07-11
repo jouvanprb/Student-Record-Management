@@ -157,3 +157,30 @@ func UpdateStudent() {
 		fmt.Printf(" ==> ID %d Not Found!", idStudent)
 	}
 }
+
+func DeleteStudent() {
+	fmt.Println("\n📝 Delete Student")
+	fmt.Println("================")
+	fmt.Print("  Enter ID: ")
+
+	var idStudent int
+	fmt.Scan(&idStudent)
+	fmt.Println()
+
+	data := LoadStudent()
+	found := false
+
+	for i, s := range data {
+		if idStudent == s.ID {
+			data = append(data[:i], data[i+1:]...)
+			found = true
+			SaveStudent(data)
+			fmt.Println(" ==> Data Deleted Successfully ")
+			break
+		}
+	}
+
+	if !found {
+		fmt.Printf(" ==> ID %d Not Found!", idStudent)
+	}
+}
