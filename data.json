@@ -1,0 +1,38 @@
+[
+  {
+    "ID": 5875,
+    "Name": "jouvan",
+    "Age": 20,
+    "Address": "Sukabirus 08"
+  },
+  {
+    "ID": 491,
+    "Name": "Riyan",
+    "Age": 22,
+    "Address": "Bojongsoang. 01"
+  },
+  {
+    "ID": 5474,
+    "Name": "",
+    "Age": 20,
+    "Address": "Ik"
+  },
+  {
+    "ID": 6535,
+    "Name": "oka",
+    "Age": 21,
+    "Address": "Laguboti"
+  },
+  {
+    "ID": 9358,
+    "Name": "Bagas",
+    "Age": 20,
+    "Address": "Asrama"
+  },
+  {
+    "ID": 8573,
+    "Name": "Zefanya",
+    "Age": 21,
+    "Address": "Unila"
+  }
+]
