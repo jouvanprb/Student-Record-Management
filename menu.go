@@ -60,6 +60,8 @@ func AddStudent() {
 	data = append(data, newData)
 	// Send data to Func
 	SaveStudent(data)
+	
+	fmt.Println(" ==> Data Created Successfully ")
 }
 
 func ViewStudent() {
